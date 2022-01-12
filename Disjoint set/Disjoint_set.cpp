@@ -12,12 +12,12 @@ public:
         parent.resize(n, 0);
         rank.resize(n, 0);
         for(int i = 0;i<n; ++i){
-            parent[i] = i;
+            parent[i] = i;  // initially every one is its own parent
         }
     }
     int find(int x){
         if(parent[x] == x)return x;
-        else return  parent[x] =  find(parent[x]);
+        else return  parent[x] =  find(parent[x]); // used path compression
     }
 
     void union(int x, int y){
