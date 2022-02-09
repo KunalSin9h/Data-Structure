@@ -1,19 +1,20 @@
 #include <iostream>
 #include <queue> // for priority queue
+#include <set>
 using namespace std;
 
 typedef long long ll;
 
 constexpr int N = 1e5;
-constexpr int INF = 1e9 + 10;
+constexpr int INF = 2e9;
 
-vector<pair<int, int>> graph[N]
+vector<pair<int, int>> graph[N];
 
 void dijkstra(int source){
     vector<int> dis(N, INF);
     vector<int> vis(N, 0);
 
-    //std::priority_queue<pair<int, int>> pq;
+//    std::priority_queue<pair<int, int>, vector<pair<int,int>>> pq;
     set<pair<int, int>> st;
 
     st.insert({0, source});
