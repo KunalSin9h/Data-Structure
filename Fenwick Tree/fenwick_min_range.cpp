@@ -1,9 +1,8 @@
 #include<bits/stdc++.h>
-using std::cerr;
 using std::string;
 using std::pair;
 /*
-*   Finding minimum of [0, r] in one-dimensional array(Range Minimun Query)
+*   F(r):  Finding minimum of [0, r] in one-dimensional array(Range Minimun Query)
 */
 
 struct FenwickMin{
@@ -24,12 +23,6 @@ int getmin(int r){
 }
 };
 
-#ifndef  ONLINE_JUDGE
-#include "C:\Debug.h"
-#else
-#define dbg(x...) 
-#endif
-
 int main(){
     std::cin.tie(0)->sync_with_stdio(0);
     int N;std::cin >> N;
@@ -38,7 +31,6 @@ int main(){
 
 
     FenwickMin F(A);
-    dbg(F.T);
     int Q;std::cin >> Q;
     while(Q--){
         int a;std::cin >> a;
