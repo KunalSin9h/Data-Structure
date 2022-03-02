@@ -14,9 +14,11 @@ FenwickMin(std::vector<int> &A): FenwickMin((int)A.size()){
     for(int i = 0;i<N; ++i) update(i, A[i]);
 }
 void update(int i, int x){
+    assert(i < N);
     for(; i<N; i = (i | (i + 1))) T[i] = std::min(T[i], x);
 }
 int getmin(int r){
+    assert(r < N);
     int res = inf;
     for(; r >= 0; r = (r&(r+1))-1) res = std::min(res, T[r]);
     return res;
