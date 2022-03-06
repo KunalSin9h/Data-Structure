@@ -1,10 +1,8 @@
 # First Operation is to find T(i) = A[g(i), i]
-
-def g(i):
-    return i & (i + 1)
-
-def h(i):
-    return i | (i + 1)
+#G function To find sum
+g = lambda i: i&(i+1)
+#H function to Update
+h = lambda i: i|(i+1)
 
 def S(i, j, A):
     res = 0
@@ -19,7 +17,7 @@ class Fenwick:
         self.n = len(A)
         self.T = [0]*self.n
         for i in range(self.n):
-            self.T[i] = S(g(i), i, A)
+            self.add(i, A[i])
 
     # Sum find the sum of Element in A[0, r]  
     # O(log n)

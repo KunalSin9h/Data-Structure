@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+ * A Binary Indexed (Fenwick) Tree is a data structure that 
+ * provides efficient methods for implementing dynamic cumulative frequency tables
+ */
+
 struct Fenwick{
 std::vector<int> T;
 int N;
@@ -21,9 +26,24 @@ int sum(int r){
 int sum(int l, int r){
     return sum(r) - sum(l-1);
 }
+int get_element(int i){
+    return sum(i, i);
+}
 };
+
+
+#ifndef  ONLINE_JUDGE
+#include "C:\Debug.h"
+#else
+#define dbg(x...) 
+#endif
 
 int main(){
     cin.tie(0)->sync_with_stdio(0);
+    vector<int> A{1, 2, 3, 4, 5};
+
+    Fenwick F(A);
+
+    dbg(F.T);
     return 0;
 }
