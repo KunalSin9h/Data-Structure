@@ -32,18 +32,11 @@ int get_element(int i){
 };
 
 
-#ifndef  ONLINE_JUDGE
-#include "C:\Debug.h"
-#else
-#define dbg(x...) 
-#endif
-
 int main(){
     cin.tie(0)->sync_with_stdio(0);
     vector<int> A{1, 2, 3, 4, 5};
 
     Fenwick F(A);
 
-    dbg(F.T);
     return 0;
 }
