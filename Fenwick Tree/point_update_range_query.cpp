@@ -14,13 +14,11 @@ Fenwick(std::vector<int> &A): Fenwick((int) A.size()){
     for(int i = 0; i < N; ++i) add(i, A[i]);
 }
 void add(int i, int x){
-    assert(i < N);
-    for(; i < N; i = (i | (i + 1))) T[i] += x;
+    for(; i < N; i = (i | (i + 1))) T.at(i) += x;
 }
 int sum(int r){
-    assert(r < N);
     int res = 0;
-    for(; r >= 0; r = (r&(r+1)) - 1) res += T[r];
+    for(; r >= 0; r = (r&(r+1)) - 1) res += T.at(r);
     return res;
 }
 int sum(int l, int r){
