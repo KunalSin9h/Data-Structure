@@ -12,7 +12,7 @@ Fenwick(std::vector<int> &A) : Fenwick((int)A.size()){
     for(int i = 0;i<N-1; ++i) point_update(i, A[i]);
 }
 void update(std::vector<int> &T, int i, int x){
-    for(++i; i < N; i += i&(-i)) T.at(i) += x;
+    for(++i; i < N; i += (i&(-i))) T.at(i) += x;
 }
 void range_update(int l, int r, int x){
     // Normal Range Update Point Query Tree (T1)
@@ -22,16 +22,17 @@ void range_update(int l, int r, int x){
     update(T2, l, x*(l-1));
     update(T2, r+1, -x*r); // simplified of : -x*(l-1) - (r-l+1)*x
 }
-void point_update(int i, int x){ // Use full only for Constructing form A array
+void point_update(int i, int x){ // Usefull only for Constructing form A array
     range_update(i, i, x);
 }
 int point_query(std::vector<int> &T, int i){
     int res = 0;
-    for(++i; i > 0; i -= i&(-i))res += T.at(i);;
+    for(++i; i > 0; i -= (i&(-i)))res += T.at(i);;
     return res;
 }
 int prefix_sum(int i){
-    return (point_query(T1, i)*i - point_query(T2, i)); // Error - Fix := Ans
+    // i is 0-Based indexing     
+    return (point_query(T1, i)*(i + 1) - point_query(T2, i)); // Error - Fix := Ans
 }
 int range_query(int l, int r){
     return prefix_sum(r) - prefix_sum(l-1);

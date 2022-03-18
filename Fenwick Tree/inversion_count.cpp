@@ -39,7 +39,13 @@ int main(){
     Fenwick F(N);
     int inv = 0;
     for(auto it = P.crbegin(); it < P.crend(); ++it){ // it -> const_reverse_iterator
-        inv += F.sum(*it);
+        inv += F.sum(*it); // only valid for unique element 
+        /*
+        if not unique elements then
+
+        inv += F.sum(*it - 1);
+
+        */
         F.add(*it, 1);
     }
     cout << inv << '\n';

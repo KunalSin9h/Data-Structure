@@ -16,11 +16,11 @@ void range_update(int l, int r, int x){
     update(r+1, -x);
 }
 void point_update(int i, int x){
-    return range_update(i, i, x);
+    range_update(i, i, x);
 }
 int point_query(int i){
     int res = 0;
-    for(++i; i > 0; i -= i&(-i)) res += T.at(i);
+    for(++i; i > 0; i -= (i&(-i))) res += T.at(i);
     return res;
 }
 };

@@ -11,21 +11,21 @@ std::vector<int> T;
 int N;
 Fenwick(int n):N{n}{T.assign(N, 0);}
 Fenwick(std::vector<int> &A): Fenwick((int) A.size()){
-    for(int i = 0; i < N; ++i) add(i, A[i]);
+    for(int i = 0; i < N; ++i) update(i, A[i]);
 }
-void add(int i, int x){
+void update(int i, int x){
     for(; i < N; i = (i | (i + 1))) T.at(i) += x;
 }
-int sum(int r){
+int query(int r){
     int res = 0;
     for(; r >= 0; r = (r&(r+1)) - 1) res += T.at(r);
     return res;
 }
-int sum(int l, int r){
-    return sum(r) - sum(l-1);
+int range_query(int l, int r){
+    return (query(r) - query(l-1));
 }
 int get_element(int i){
-    return sum(i, i);
+    return range_query(i, i);
 }
 };
 
