@@ -10,15 +10,18 @@ private:
     void pop_(std::array<std::stack<T>, 2> &S){
         S[0].pop();S[1].pop();
     }
-public:
-    void push(T x){push_(right, x);}
-    void pop(){
+    void refill(){
         if(left[0].empty()){
             while(!right[0].empty()){
                 push_(left, right[0].top());
                 pop_(right);
             }
         }
+    }
+public:
+    void push(T x){push_(right, x);}
+    void pop(){
+        refill();
         pop_(left);
     }
     T gcd(){
@@ -27,9 +30,11 @@ public:
         return std::__gcd(a, b);
     }
     bool empty(){
+        refill();
         return left[0].empty();
     }
     T size(){
-        return left[0].size();
+        refill();
+        return left[0].size() + right[0].size();
     }
 };
