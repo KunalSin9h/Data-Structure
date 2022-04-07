@@ -22,7 +22,7 @@ void range_update(int l, int r, int x){
     update(T2, l, x*(l-1));
     update(T2, r+1, -x*r); // simplified of : -x*(l-1) - (r-l+1)*x
 }
-void point_update(int i, int x){ // Usefull only for Constructing form A array
+void point_update(int i, int x){ 
     range_update(i, i, x);
 }
 int point_query(std::vector<int> &T, int i){
@@ -31,7 +31,7 @@ int point_query(std::vector<int> &T, int i){
     return res;
 }
 int prefix_sum(int i){
-    // i is 0-Based indexing     
+    // i is 0-Based indexing thats why we need to add 1    
     return (point_query(T1, i)*(i + 1) - point_query(T2, i)); // Error - Fix := Ans
 }
 int range_query(int l, int r){
