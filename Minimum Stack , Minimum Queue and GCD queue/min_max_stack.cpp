@@ -2,7 +2,7 @@
 using namespace std;
 
 /**
- * Modified implmentation of stack to have min()/max() functions
+ * Modified implementation of stack to have min()/max() functions
 **/
 
 template<typename T>

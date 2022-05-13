@@ -1,7 +1,7 @@
 /*
                     Dijkstra's algorithm
 
-        If not all edges in graph have the same weight, that we need a more general 
+        If *not* all edges in graph have the same weight, that we need a more general
         algorithm, like Dijkstra.
 */
 
@@ -23,9 +23,11 @@ int main(){
         graph[x].push_back({y, wt});
         graph[y].push_back({x, wt});
     }
+
     vector<int> dist(V, inf);
 
     function<void(int)> Dijkstra_Normal = [&](int source)->void {
+
         dist[source] = 0;
         set<pair<int, int>> pq;
         pq.insert({0, source});
@@ -52,6 +54,7 @@ int main(){
     */
 
     function<void(int)> Dijkstra_0_1 = [&](int source)->void {
+
         dist[source] = 0;
         deque<int> dq;
 
@@ -69,7 +72,7 @@ int main(){
                     dist[cnode] = dist[node] + cwt;
                     if(cwt == 1)
                         dq.push_back(cnode);
-                    else 
+                    else
                         dq.push_front(cnode);
                 }
             }

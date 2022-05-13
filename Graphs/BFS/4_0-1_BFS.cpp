@@ -1,5 +1,5 @@
 /*
-    4. BFS to solve the SSSP (single-source shortest path) problem in O(|E|) 
+    4. BFS to solve the SSSP (single-source shortest path) problem in O(|E|) or O(V + E)
     if the weight of each edge is either 0 or 1.
 
     when we modify the Dijkstra to accommodate benefits for only 0-1 weight, then it look like what we call it 0-1 BFS
@@ -42,7 +42,7 @@ int main(){
                     dist[cnode] = dist[node] + cwt;
                     if(cwt == 1)
                         dq.push_back(cnode);
-                    else 
+                    else
                         dq.push_front(cnode);
                 }
             }

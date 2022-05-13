@@ -39,7 +39,7 @@ int main(){
             exit(0);
         }
     }
-    print(1);
+    
     cout << false << endl;
 
     return 0;
