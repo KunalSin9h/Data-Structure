@@ -4,9 +4,9 @@
 using namespace std;
 
 // Cycle Detection Using DFS on directed and Unweighted Graph
-// may or may not contains components
+// may or may not contains components graph can be weighted!. 
 //
-// vis_family[i] -> is `i` is visited in the current streak of nodes(...family)
+// vis_streak[i] -> is `i` is visited in the current streak of nodes
 
 int main(){
 
@@ -18,25 +18,28 @@ int main(){
         int x, y;
         cin >> x >> y;
         x--;y--;
-        graph[x].push_back(y);
+        graph[x].emplace_back(y);
     }
 
     vector<bool> vis(v, false);
 
     function<bool(int)> DFS = [&](int s)->bool{
-        static vector<bool> vis_family(v, false);
-        vis[s] = vis_family[s] = true;
-        
+        static vector<bool> vis_streak(v, false);
+
+        vis[s] = vis_streak[s] = true;
+
         for(int ch : graph[s]){
                 
             if(!vis[ch]){
                 if(DFS(ch)) return true;
             }
-            else if (vis_family[ch])return true;
-             
+            else if (vis_streak[ch])return true;
+            /**
+             * this is called "Back Edge"
+             **/
         }
 
-        vis_family[s] = false;
+        vis_streak[s] = false;
         return false;
 
     };
@@ -49,7 +52,9 @@ int main(){
             }
         }
     }
+
     cout << "NO" << endl;
+
     end:;
     return 0;
 }

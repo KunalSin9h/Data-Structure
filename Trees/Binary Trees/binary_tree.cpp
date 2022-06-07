@@ -1,7 +1,3 @@
-/* DFS on the tree
-* @author - Kunal Singh
-*/
-
 #include <iostream>
 using namespace std;
 
@@ -88,8 +84,6 @@ int main(){
 
     cout << "\nHeight of this binary Tree is ";
     cout << heightTree(root) << endl;
-
-
 
     return 0;
 }
