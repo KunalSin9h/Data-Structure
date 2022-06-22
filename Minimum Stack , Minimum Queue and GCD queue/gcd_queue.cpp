@@ -1,5 +1,7 @@
-template<typename T>
-struct gqueue{
+#include <bits/stdc++.h>
+using namespace std;
+
+template<typename T> struct gqueue{
 private:
     std::array<std::stack<T>, 2> left, right;
     void push_(std::array<std::stack<T>, 2> &S, T x){
@@ -21,20 +23,33 @@ private:
 public:
     void push(T x){push_(right, x);}
     void pop(){
+        assert(!empty());
         refill();
         pop_(left);
+    }
+    bool empty(){
+        return (left[0].empty() && right[0].empty());
+    }
+    T size(){
+        return left[0].size() + right[0].size();
+    }
+    T front(){
+        assert(!empty());
+        refill();
+        return left[0].top();
     }
     T gcd(){
         T a = left[0].empty() ? 0 : left[1].top();
         T b = right[0].empty() ? 0 : right[1].top();
-        return std::__gcd(a, b);
-    }
-    bool empty(){
-        refill();
-        return left[0].empty();
-    }
-    T size(){
-        refill();
-        return left[0].size() + right[0].size();
+        assert(!empty());
+        return std::gcd(a, b);
     }
 };
+
+int main(){
+    gqueue<int> kunal;
+    kunal.push(10);
+    kunal.push(5);
+    cout << kunal.gcd() << '\n';// 5
+    return 0;
+}

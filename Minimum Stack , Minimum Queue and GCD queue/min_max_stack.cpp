@@ -5,8 +5,7 @@ using namespace std;
  * Modified implementation of stack to have min()/max() functions
 **/
 
-template<typename T>
-struct mstack{
+template<typename T> struct mstack{
 private:
     std::stack<T> base, lower, upper;
     size_t size_ {0};
@@ -47,7 +46,8 @@ public:
 
 int main(){
     cin.tie(0)->sync_with_stdio(0);
-
+    
+    // quick implementation
     stack<int> base, lower, upper;
 
     auto push = [&](int x)->void{
@@ -73,8 +73,5 @@ int main(){
         assert(base.size() > 0);
         return upper.top();
     };
-
-
-
     return 0;
 }
