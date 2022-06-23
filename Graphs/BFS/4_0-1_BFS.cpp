@@ -12,7 +12,6 @@ using namespace std;
 constexpr int inf = 2e9;
 
 int main(){
-    cin.tie(0)->sync_with_stdio(0);
 
     int V, E;
     cin >> V >> E;

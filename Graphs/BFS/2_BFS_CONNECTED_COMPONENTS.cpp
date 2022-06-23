@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Applications of BFS
+    Applications of BFS
 
     2. Find all connected components in an undirected graph in O(n + m) time
 

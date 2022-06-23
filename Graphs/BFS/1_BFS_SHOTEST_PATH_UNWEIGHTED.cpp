@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
 
 /*
@@ -19,7 +21,6 @@ Applications of BFS
 */
 
 int main(){
-    cin.tie(0)->sync_with_stdio(0);
     int V, E;
     cin >> V >> E;
 
@@ -65,7 +66,6 @@ int main(){
     for(auto it = trace.rbegin(); it != trace.rend(); it++){
         cout << *it << " \n"[it == trace.rend()];
     }    
-
     cout << '\n';
     return 0;
 }
